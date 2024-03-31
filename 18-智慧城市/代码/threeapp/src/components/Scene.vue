@@ -11,13 +11,14 @@ import axesHelper from '@/three/axesHelper';
 import camera from "@/three/camera";
 import renderer from "@/three/renderer";
 import animate from "@/three/animate";
+import createMesh from '@/three/createMesh'
 
 // 场景元素div
 let sceneDiv = ref(null)
 // 添加相机
 scene.add(camera);
 scene.add(axesHelper);
-
+createMesh()
 onMounted(() => {
   sceneDiv.value.appendChild(renderer.domElement);
   animate();
