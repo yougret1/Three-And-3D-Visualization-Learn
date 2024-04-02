@@ -1,8 +1,12 @@
-import * as THREE from 'three'
+import * as THREE from "three";
 
-const camera = new THREE.PerspectiveCamera(
-  50 , window.innerWidth / window.innerHeight,1,50
-)
-camera.position.set(0,0,1)
+const humanCamera = new THREE.PerspectiveCamera(
+  50,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  50
+);
+var eyeHeight = 0.3;
+humanCamera.position.set(0, eyeHeight, 1);
 
-export default camera
+export { humanCamera, eyeHeight };
