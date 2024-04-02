@@ -6,10 +6,10 @@
 
 <script>
 // @ is an alias to /src
-import testVertex from '@/shader/test/Vertex.glsl'
+// import testVertex from '@/shader/test/Vertex.glsl'
 import Scene from '@/components/Scene.vue'
 
-console.log(testVertex)
+// console.log(testVertex)
 export default {
   name: 'Home',
   components: {

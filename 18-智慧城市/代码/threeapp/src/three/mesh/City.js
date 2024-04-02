@@ -9,7 +9,7 @@ export default function createCity() {
   const gltfLoader = new GLTFLoader();
   gltfLoader.load("./model/zjweu_not_sut_up_smallest.glb", (gltf) => {
     gltf.scene.traverse((item) => {
-      console.log(item);
+      // console.log(item);
       if (item.type == "Mesh" || item.type == "Object3D") {
         const cityMaterial = new THREE.MeshBasicMaterial({
           color: new THREE.Color(0xe33),

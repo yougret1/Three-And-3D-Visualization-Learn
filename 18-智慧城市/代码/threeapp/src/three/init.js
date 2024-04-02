@@ -1,6 +1,6 @@
 // 设置摄像头和渲染器的实时监听屏幕大小变化
 
-import camera from "./camera"
+import camera from "./camera/camera"
 import renderer from './renderer'
 
 

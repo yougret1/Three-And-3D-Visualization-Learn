@@ -1,13 +1,46 @@
 <template>
   <div id="nav">
-    <router-link to="/" v-bind:class="{ 'active': activeLink === 'home' }" @click="setActiveLink('home')">Home</router-link> |
-    <router-link to="/about" v-bind:class="{ 'active': activeLink === 'about' }" @click="setActiveLink('about')">About</router-link>
+    <button>
+      <router-link to="/" v-bind:class="{ 'active': activeLink === 'home' }"
+        @click="setActiveLink('home')">Home</router-link>
+    </button>
+    &nbsp;| &nbsp;
+    <button>
+      <router-link to="/about" v-bind:class="{ 'active': activeLink === 'about' }"
+        @click="setActiveLink('about')">About</router-link>
+    </button>
+    &nbsp;| &nbsp;
+    <button @click="openHumanView()">人物视角</button>
   </div>
-  <router-view/>
+  <router-view />
 </template>
 
+<script>
+import * as eventEmitter from './emitter/eventEmitter'
+export default {
+  data() {
+    return {
+      activeLink: '', // 用于存储当前活动的链接
+      humanView:false,
+    };
+  },
+  methods: {
+    setActiveLink(link) {
+      this.activeLink = link;
+    },
+    openHumanView() {
+      this.humanView = !this.humanView;
+      eventEmitter.emit('human-view', this.humanView);
+    }
+  }
+};
+</script>
+
+
+
 <style lang="less">
-html,body{
+html,
+body {
   padding: 0;
   margin: 0;
   border: 0;
@@ -20,7 +53,8 @@ html,body{
   text-align: center;
   color: #2c3e50;
 }
-#nav{
+
+#nav {
   position: fixed;
   display: flex;
   top: 0;
@@ -37,18 +71,4 @@ html,body{
   color: gray; // 已经点击过的字体变为红色
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      activeLink: '' // 用于存储当前活动的链接
-    };
-  },
-  methods: {
-    setActiveLink(link) {
-      this.activeLink = link;
-    }
-  }
-};
-</script>
+./emitter/eventEmitter

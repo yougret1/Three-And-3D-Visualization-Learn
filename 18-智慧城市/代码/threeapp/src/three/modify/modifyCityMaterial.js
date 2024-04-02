@@ -72,7 +72,7 @@ export function addGradColor(shader, mesh) {
 
       `
   );
-  console.log(shader.fragmentShader)
+  // console.log(shader.fragmentShader)
 }
 
 export function addSpread(shader) {

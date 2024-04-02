@@ -8,7 +8,7 @@ import { onMounted, ref, watch } from "vue";
 import gui from '@/three/gui';
 import scene from '@/three/scene'
 import axesHelper from '@/three/axesHelper';
-import camera from "@/three/camera";
+import camera from "@/three/camera/camera";
 import renderer from "@/three/renderer";
 import animate from "@/three/animate";
 import createMesh from '@/three/createMesh'
@@ -27,4 +27,4 @@ onMounted(() => {
 </script>
 <style scoped>
 /* @import url(); 引入css类 */
-</style>
+</style>@/three/camera/camera
