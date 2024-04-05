@@ -3,7 +3,7 @@ import * as THREE from "three";
 const humanCamera = new THREE.PerspectiveCamera(
   50,
   window.innerWidth / window.innerHeight,
-  0.1,
+  0.5,
   50
 );
 var eyeHeight = 0.3;

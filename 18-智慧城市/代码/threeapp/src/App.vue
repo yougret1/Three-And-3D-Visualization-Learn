@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" v-bind:class="{ 'notShow': isLogin == false }">
     <button>
       <router-link to="/" v-bind:class="{ 'active': activeLink === 'home' }"
         @click="setActiveLink('home')">Home</router-link>
@@ -21,7 +21,8 @@ export default {
   data() {
     return {
       activeLink: '', // 用于存储当前活动的链接
-      humanView:false,
+      humanView: false,
+      isLogin: false
     };
   },
   methods: {
@@ -70,5 +71,9 @@ body {
 .clicked {
   color: gray; // 已经点击过的字体变为红色
 }
+
+.notShow {
+  display: none !important;
+}
 </style>
-./emitter/eventEmitter
+./utils/emitter/eventEmitter
