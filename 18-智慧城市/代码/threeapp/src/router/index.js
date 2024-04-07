@@ -3,11 +3,12 @@ import Home from "../views/Home.vue";
 import TianDiTu from "@/components/TianDiTu";
 import Scene from "@/components/Scene";
 import Login from "@/views/Login";
+import notFind from "@/views/404";
 
 const routes = [
   {
     path: "/",
-    redirect: "/home",
+    redirect: "/login",
   },
   { path: "/home", name: "Home", component: Home },
   {
@@ -30,7 +31,7 @@ const routes = [
     path: "/login",
     name: "login",
     component: Login,
-  },
+  }
 ];
 
 const router = createRouter({

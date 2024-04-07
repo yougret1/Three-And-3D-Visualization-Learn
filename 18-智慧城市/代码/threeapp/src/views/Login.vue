@@ -33,7 +33,7 @@
 <script setup>
 
 import { ref, onMounted, reactive } from 'vue';
-import * as emitter from "../emitter/eventEmitter";
+import * as eventEmitter from "../emitter/eventEmitter";
 import { throttle } from '@/utils/throttle/throttle';
 import { useRouter } from "vue-router";
 
@@ -60,6 +60,7 @@ const checkLogin = async () => {
   }
   if (formInline.value.password === "123456" && formInline.value.username === "admin") {
     console.log(123)
+    eventEmitter.emit('is-login',true);
     router.push('/home')
   }
   // const res = await this.$http.post("/login", this.formInline);

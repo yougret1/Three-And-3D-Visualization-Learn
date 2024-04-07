@@ -11,8 +11,10 @@ import axesHelper from '@/three/axesHelper';
 import camera from "@/three/camera/camera";
 import renderer from "@/three/renderer";
 import animate from "@/three/animate";
-import createMesh from '@/three/createMesh'
+import createMesh from '@/three/createMesh';
+import init from '@/three/init';
 
+init()
 // 场景元素div
 let sceneDiv = ref(null)
 // 添加相机
