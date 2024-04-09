@@ -1,5 +1,6 @@
 <!--  -->
 <template>
+  <PointSphere class="pointSphere"></PointSphere>
   <div class="scene" ref="sceneDiv"></div>
 </template>
 
@@ -13,6 +14,7 @@ import renderer from "@/three/renderer";
 import animate from "@/three/animate";
 import createMesh from '@/three/createMesh';
 import init from '@/three/init';
+import PointSphere from "./PointSphere.vue";
 
 init()
 // 场景元素div
@@ -27,6 +29,14 @@ onMounted(() => {
 });
 
 </script>
-<style scoped>
+<style scoped lang="less">
+.pointSphere{
+  position: fixed;
+  width: 30vw;
+  height: 25vw;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
 /* @import url(); 引入css类 */
 </style>@/three/camera/camera
