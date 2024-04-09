@@ -5,7 +5,7 @@
 
 <script setup>
 import { onMounted, ref, watch } from "vue";
-import gui from '@/three/gui';
+// import gui from '@/three/gui';
 import scene from '@/three/scene'
 import axesHelper from '@/three/axesHelper';
 import camera from "@/three/camera/camera";

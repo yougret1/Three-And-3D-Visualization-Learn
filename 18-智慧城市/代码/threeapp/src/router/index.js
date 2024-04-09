@@ -4,6 +4,7 @@ import TianDiTu from "@/components/TianDiTu";
 import Scene from "@/components/Scene";
 import Login from "@/views/Login";
 import notFind from "@/views/404";
+import * as eventEmitter from "@/emitter/eventEmitter";
 
 const routes = [
   {
@@ -31,12 +32,16 @@ const routes = [
     path: "/login",
     name: "login",
     component: Login,
-  }
+  },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
+router.beforeEach((to, from, next) => {
+  // console.log(to.path);
+  eventEmitter.emit("path",to.path)
+  next();
+});
 export default router;

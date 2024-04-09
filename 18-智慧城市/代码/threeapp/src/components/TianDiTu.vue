@@ -112,7 +112,7 @@ export default {
     });
 
     var point = new T.LngLat(120.437058, 30.840283);
-    var pdefinedOverlay = new definedOverlay(point, "浙江水利水电学院(南浔校区)", "点击查看", {});
+    var pdefinedOverlay = new definedOverlay(point, "浙江水利水电学院(南浔校区)为例", "点击查看", {});
     this.map.addOverLay(pdefinedOverlay);
 
 

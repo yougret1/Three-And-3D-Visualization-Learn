@@ -1,13 +1,13 @@
 <template>
-  <div id="nav" v-bind:class="{ 'notShow': isLogin == false }">
+  <div id="nav" v-bind:class="{ 'notShow': isLogin == false || nowPath != '/home'  }">
     <button>
       <router-link to="/" v-bind:class="{ 'active': activeLink === 'home' }"
-        @click="setActiveLink('home')">Home</router-link>
+        @click="setActiveLink('tianditu')">查看地图</router-link>
     </button>
     &nbsp;| &nbsp;
     <button>
       <router-link to="/about" v-bind:class="{ 'active': activeLink === 'about' }"
-        @click="setActiveLink('about')">About</router-link>
+        @click="setActiveLink('')">重新登录</router-link>
     </button>
     &nbsp;| &nbsp;
     <button @click="openHumanView()">人物视角</button>
@@ -16,44 +16,49 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import * as eventEmitter from './emitter/eventEmitter'
 
 export default {
-  setup(){
-    const route = useRoute(); 
-    eventEmitter.on("is-login",(event)=>{
-      console.log(123)
-      console.log(route.path)
-      this.updateIsLogin(event);
-    }
+  setup() {
+    const activeLink = ref(''); // 用于存储当前活动的链接
+    const humanView = ref(false);
+    const isLogin = ref(false);
+    const nowPath = ref('');
+    const route = useRoute();
+    const href = window.location.href.split('/');
 
+    console.log(href[href.length - 1]);
     
+    eventEmitter.on("is-login", (event) => {
+      isLogin.value = event;
+    });
 
+    eventEmitter.on("path", (event) => {
+      nowPath.value = event;
+      console.log([nowPath.value, isLogin.value]);
+    });
 
-  )
-  },
-  data() {
+    const setActiveLink = (link) => {
+      activeLink.value = link;
+    };
+
+    const openHumanView = () => {
+      humanView.value = !humanView.value;
+      eventEmitter.emit('human-view', humanView.value);
+    };
+
     return {
-      activeLink: '', // 用于存储当前活动的链接
-      humanView: false,
-      isLogin: false,
-      
+      activeLink,
+      humanView,
+      isLogin,
+      nowPath,
+      setActiveLink,
+      openHumanView
     };
   },
-  methods: {
-    setActiveLink(link) {
-      this.activeLink = link;
-    },
-    openHumanView() {
-      this.humanView = !this.humanView;
-      eventEmitter.emit('human-view', this.humanView);
-    },
-    updateIsLogin(event){
-      this.isLogin = event;
-    }
-  },
-  
+
 };
 </script>
 
@@ -61,7 +66,8 @@ export default {
 
 <style lang="less">
 html,
-body,#app {
+body,
+#app {
   padding: 0;
   margin: 0;
   border: 0;

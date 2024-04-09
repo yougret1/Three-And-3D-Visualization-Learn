@@ -61,7 +61,7 @@ const checkLogin = async () => {
   if (formInline.value.password === "123456" && formInline.value.username === "admin") {
     console.log(123)
     eventEmitter.emit('is-login',true);
-    router.push('/home')
+    router.push('/tianditu')
   }
   // const res = await this.$http.post("/login", this.formInline);
   // if (res != "") {
