@@ -11,7 +11,7 @@
       <div class="right">
         <div class="title_container">
           <!-- Problem solving management system -->
-          <h2 style="display: inline-block">巴拉巴拉系统</h2>
+          <h2 style="display: inline-block">系统</h2>
         </div>
         <el-form :model="formInline" class="formModel">
           <el-input v-model="formInline.username" placeholder="账号" size="large">

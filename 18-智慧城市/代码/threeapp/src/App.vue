@@ -1,12 +1,12 @@
 <template>
-  <div id="nav" v-bind:class="{ 'notShow': isLogin == false || nowPath != '/home'  }">
+  <div id="nav" v-bind:class="{ 'notShow': isLogin == false }">
     <button>
-      <router-link to="/" v-bind:class="{ 'active': activeLink === 'home' }"
+      <router-link to="/tianditu" v-bind:class="{ 'active': activeLink === 'home' }"
         @click="setActiveLink('tianditu')">查看地图</router-link>
     </button>
     &nbsp;| &nbsp;
     <button>
-      <router-link to="/about" v-bind:class="{ 'active': activeLink === 'about' }"
+      <router-link to="/" v-bind:class="{ 'active': activeLink === 'about' }"
         @click="setActiveLink('')">重新登录</router-link>
     </button>
     &nbsp;| &nbsp;
@@ -32,12 +32,13 @@ export default {
     console.log(href[href.length - 1]);
     
     eventEmitter.on("is-login", (event) => {
-      isLogin.value = event;
+      isLogin.value = event.detail;
+      console.log("is-login",isLogin.value)
     });
 
     eventEmitter.on("path", (event) => {
-      nowPath.value = event;
-      console.log([nowPath.value, isLogin.value]);
+      nowPath.value = event.detail;
+      console.log("path",[nowPath.value, isLogin.value]);
     });
 
     const setActiveLink = (link) => {

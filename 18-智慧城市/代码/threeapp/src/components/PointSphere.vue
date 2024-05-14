@@ -5,7 +5,7 @@
 
 <script>
 import * as THREE from "three";
-import * as dat from "dat.gui";
+
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export default {
@@ -25,15 +25,11 @@ export default {
 
     var controls = new OrbitControls(camera, renderer.domElement);
 
-    var gui = new dat.GUI();
+    // var gui = new dat.GUI();
     var params = {
       numberOfPoints: 25,
       alpha: 10.0,
     };
-    var folder = gui.addFolder("Parameters");
-    folder.add(params, "numberOfPoints", 1, 50).step(1).name("Number of Points");
-    folder.add(params, "alpha", 0.1, 50).step(1).name("Alpha");
-    folder.hide();
 
     var points = [];
 
@@ -90,6 +86,13 @@ export default {
       }
       points.length = index;
     }
+    var city = [
+     "嘉业路水位","联谊路水位","湖浔大道水位","姚家坝水位","温吞㘰水位","大丰㘰水位","浔乌线水位","泥坝桥水位","博成桥"
+    ,"嘉业路水位","联谊路水位","湖浔大道水位","姚家坝水位","温吞㘰水位","大丰㘰水位","浔乌线水位","泥坝桥水位","博成桥"
+    ,"嘉业路水位","联谊路水位","湖浔大道水位","姚家坝水位","温吞㘰水位","大丰㘰水位","浔乌线水位","泥坝桥水位","博成桥",] 
+
+    var massage = [13, 81, 81, 96, 93, 56, 34, 14, 44, 95, 78, 88, 25, 34, 77, 96, 90, 9, 13, 2, 10, 24, 61, 67, 64, 51, 39, 1, 16, 88, 9, 42, 24, 48, 1, 99, 23, 21, 28, 37, 70, 28, 98, 49, 38, 97, 4, 47, 40, 26]
+    
     //
     setPoint(params.numberOfPoints);
     var pointsGeometry = new THREE.BufferGeometry().setFromPoints(points);
@@ -224,20 +227,6 @@ export default {
       renderer.render(scene, camera);
     }
 
-    folder.__controllers[1].onChange((value) => {
-      setConvexMesh(value);
-      params.alpha = value;
-    });
-    folder.__controllers[0].onChange((value) => {
-      scene.remove(pointsMesh);
-      setPoint(value);
-      pointsGeometry = new THREE.BufferGeometry().setFromPoints(points);
-      pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial);
-      scene.add(pointsMesh);
-      params.numberOfPoints = value;
-      setConvexMesh(params.alpha);
-    });
-
     camera.position.z = 30;
     // 画面尺寸自适应
     const clock = new THREE.Clock();
@@ -264,8 +253,8 @@ export default {
       requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
-      scene.rotation.y += 0.01;
-      scene.rotation.x += 0.01;
+      scene.rotation.y += 0.002;
+      scene.rotation.x -= 0.002;
     }
     animate();
 

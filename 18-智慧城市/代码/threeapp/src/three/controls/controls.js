@@ -11,6 +11,9 @@ import * as THREE from "three";
 var controls = new OrbitControls(camera, renderer.domElement);
 var humanControls = new PointerLockControls(humanCamera, renderer.domElement);
 
+// 增加鼠标控制速度
+humanControls.pointerSpeed = 3.0
+
 var humanActivity = {
   moveForward: false,
   moveBackward: false,
